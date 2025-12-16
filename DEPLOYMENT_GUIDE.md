@@ -209,4 +209,3 @@ For Next.js applications, **Vercel is the best choice** because:
 - Fast global CDN
 - Easy custom domains
 
-

@@ -74,4 +74,3 @@ After redeploying, your site should work at:
 
 The homepage should load correctly showing your Alankar Cosmetics website.
 
-

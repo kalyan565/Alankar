@@ -64,4 +64,3 @@ To replace placeholder images with actual product images, follow these steps:
 3. Update `data/products.ts` with new image paths
 4. Test the website to ensure all images load correctly
 
-

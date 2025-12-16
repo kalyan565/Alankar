@@ -50,4 +50,3 @@ If you get any errors, check:
 - `package.json` exists
 - Images are in `public/images/products/` folder
 
-

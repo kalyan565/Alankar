@@ -41,7 +41,7 @@ export default function CheckoutPage() {
         <div className="max-w-2xl mx-auto text-center">
           <FiCheckCircle className="w-20 h-20 text-green-500 mx-auto mb-4" />
           <h1 className="text-4xl font-bold mb-4 text-gray-800">Order Placed Successfully!</h1>
-          <p className="text-gray-600 mb-8">Thank you for your order. We'll send you a confirmation email shortly.</p>
+          <p className="text-gray-600 mb-8">Thank you for your order. We&apos;ll send you a confirmation email shortly.</p>
           <Link
             href="/"
             className="inline-block bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-700 transition"
