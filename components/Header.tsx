@@ -4,14 +4,26 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useCart } from '@/context/CartContext'
 import { FiShoppingCart, FiMenu, FiSearch, FiPackage } from 'react-icons/fi'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Logo from './Logo'
 
 export default function Header() {
-  const { getTotalItems } = useCart()
+  const { getTotalItems, cart } = useCart()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [cartAnimation, setCartAnimation] = useState(false)
+  const [previousCartCount, setPreviousCartCount] = useState(0)
   const router = useRouter()
+
+  // Trigger animation when cart items change
+  useEffect(() => {
+    const currentCount = getTotalItems()
+    if (currentCount > previousCartCount) {
+      setCartAnimation(true)
+      setTimeout(() => setCartAnimation(false), 600)
+    }
+    setPreviousCartCount(currentCount)
+  }, [cart, getTotalItems, previousCartCount])
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -64,11 +76,27 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <Link
               href="/cart"
-              className="relative p-2 text-gray-700 hover:text-black transition"
+              className={`relative p-2 transition-all duration-300 ${
+                getTotalItems() > 0 
+                  ? 'text-red-600 hover:text-red-700' 
+                  : 'text-gray-700 hover:text-black'
+              }`}
             >
-              <FiShoppingCart className="w-6 h-6" />
+              <FiShoppingCart 
+                className={`w-6 h-6 transition-all duration-300 ${
+                  cartAnimation 
+                    ? 'animate-cart-bounce' 
+                    : ''
+                } ${
+                  getTotalItems() > 0 
+                    ? 'text-red-600' 
+                    : 'text-gray-700'
+                }`}
+              />
               {getTotalItems() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className={`absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold transition-all duration-300 ${
+                  cartAnimation ? 'animate-cart-pulse scale-125' : ''
+                }`}>
                   {getTotalItems()}
                 </span>
               )}
