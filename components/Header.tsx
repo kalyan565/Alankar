@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useCart } from '@/context/CartContext'
-import { FiShoppingCart, FiMenu, FiSearch } from 'react-icons/fi'
+import { FiShoppingCart, FiMenu, FiSearch, FiPackage } from 'react-icons/fi'
 import { useState } from 'react'
 import Logo from './Logo'
 
@@ -34,24 +34,29 @@ export default function Header() {
             <Link href="/products" className="text-gray-700 hover:text-red-600 transition font-medium">
               Products
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-red-600 transition font-medium">
-              About
-            </Link>
             <Link href="/contact" className="text-gray-700 hover:text-red-600 transition font-medium">
               Contact
+            </Link>
+            <Link href="/orders" className="text-gray-700 hover:text-red-600 transition font-medium flex items-center gap-1">
+              <FiPackage className="w-4 h-4" />
+              Orders
             </Link>
             
             {/* Search Bar */}
             <form onSubmit={handleSearch} className="ml-4">
-              <div className="relative">
-                <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <div className="relative group">
+                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 transition-all duration-300 group-focus-within:scale-110 group-focus-within:text-red-600">
+                  <FiSearch className="w-4 h-4 text-gray-400 group-focus-within:text-red-600 transition-colors duration-300" />
+                </div>
                 <input
                   type="text"
                   placeholder="Search products..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-300 text-sm w-64"
+                  className="pl-10 pr-4 py-2 border-2 border-gray-200 rounded-lg bg-white shadow-sm text-sm w-64 transition-all duration-300 focus:outline-none focus:border-transparent focus:shadow-md focus:shadow-red-100 focus:bg-gray-50 hover:border-gray-300"
                 />
+                {/* Animated underline effect */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 transform scale-x-0 group-focus-within:scale-x-100 origin-center rounded-full"></div>
               </div>
             </form>
           </nav>
@@ -95,31 +100,36 @@ export default function Header() {
               Products
             </Link>
             <Link
-              href="/about"
-              className="block py-2 text-gray-700 hover:text-red-600 transition"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
               href="/contact"
               className="block py-2 text-gray-700 hover:text-red-600 transition"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact
             </Link>
-            
-            {/* Mobile Search Bar */}
+                <Link
+                  href="/orders"
+                  className="block py-2 text-gray-700 hover:text-red-600 transition flex items-center gap-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <FiPackage className="w-4 h-4" />
+                  Orders
+                </Link>
+
+                {/* Mobile Search Bar */}
             <form onSubmit={handleSearch} className="pt-2">
-              <div className="relative">
-                <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <div className="relative group">
+                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 transition-all duration-300 group-focus-within:scale-110 group-focus-within:text-red-600">
+                  <FiSearch className="w-4 h-4 text-gray-400 group-focus-within:text-red-600 transition-colors duration-300" />
+                </div>
                 <input
                   type="text"
                   placeholder="Search products..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-300 text-sm"
+                  className="w-full pl-10 pr-4 py-2 border-2 border-gray-200 rounded-lg bg-white shadow-sm text-sm transition-all duration-300 focus:outline-none focus:border-transparent focus:shadow-md focus:shadow-red-100 focus:bg-gray-50 hover:border-gray-300"
                 />
+                {/* Animated underline effect */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 transform scale-x-0 group-focus-within:scale-x-100 origin-center rounded-full"></div>
               </div>
             </form>
           </nav>
