@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { useCart } from '@/context/CartContext'
-import { FiShoppingCart, FiPlus, FiMinus } from 'react-icons/fi'
+import { FiShoppingCart, FiPlus, FiMinus, FiArrowRight } from 'react-icons/fi'
 import { Product } from '@/context/CartContext'
+import Link from 'next/link'
 
 interface ProductCardProps {
   product: Product
@@ -65,28 +66,38 @@ export default function ProductCard({ product }: ProductCardProps) {
         <h3 className="font-bold text-lg mb-2 text-gray-800">{product.name}</h3>
         <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
 
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-end gap-3">
           {cartItem ? (
-            // Show quantity controls if item is in cart
-            <div className="flex items-center gap-3 bg-gray-100 rounded-lg px-3 py-2">
-              <button
-                onClick={handleDecreaseQuantity}
-                className="p-1.5 rounded-lg hover:bg-red-50 hover:text-red-600 transition text-black"
-                aria-label="Decrease quantity"
+            // Show quantity controls and Go to Cart button if item is in cart
+            <>
+              <div className="flex items-center gap-3 bg-gray-100 rounded-lg px-3 py-2">
+                <button
+                  onClick={handleDecreaseQuantity}
+                  className="p-1.5 rounded-lg hover:bg-red-50 hover:text-red-600 transition text-black"
+                  aria-label="Decrease quantity"
+                >
+                  <FiMinus className="w-4 h-4" />
+                </button>
+                <span className="font-bold text-black min-w-[2rem] text-center">
+                  {cartItem.quantity}
+                </span>
+                <button
+                  onClick={handleIncreaseQuantity}
+                  className="p-1.5 rounded-lg hover:bg-red-50 hover:text-red-600 transition text-black"
+                  aria-label="Increase quantity"
+                >
+                  <FiPlus className="w-4 h-4" />
+                </button>
+              </div>
+              <Link
+                href="/cart"
+                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition flex items-center gap-2 font-semibold"
               >
-                <FiMinus className="w-4 h-4" />
-              </button>
-              <span className="font-bold text-black min-w-[2rem] text-center">
-                {cartItem.quantity}
-              </span>
-              <button
-                onClick={handleIncreaseQuantity}
-                className="p-1.5 rounded-lg hover:bg-red-50 hover:text-red-600 transition text-black"
-                aria-label="Increase quantity"
-              >
-                <FiPlus className="w-4 h-4" />
-              </button>
-            </div>
+                <FiShoppingCart />
+                Go to Cart
+                <FiArrowRight className="w-4 h-4" />
+              </Link>
+            </>
           ) : (
             // Show Add to Cart button if item is not in cart
             <button
