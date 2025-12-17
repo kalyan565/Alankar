@@ -82,7 +82,6 @@ export default function OrdersPage() {
                 )}
               </div>
               <div className="text-right">
-                <p className="text-2xl font-bold text-gray-800 blur-sm select-none">₹{order.total.toFixed(0)}</p>
                 <p className="text-sm text-gray-600">{order.items.length} item{order.items.length !== 1 ? 's' : ''}</p>
               </div>
             </div>
@@ -93,17 +92,8 @@ export default function OrdersPage() {
                 {order.items.map((item, index) => (
                   <div key={index} className="flex justify-between text-sm py-2">
                     <span className="text-gray-600">{item.name} x{item.quantity}</span>
-                    <span className="font-semibold blur-sm select-none">₹{(item.price * item.quantity).toFixed(0)}</span>
                   </div>
                 ))}
-              </div>
-              <div className="mt-4 pt-4 border-t flex justify-between text-sm">
-                <span className="text-gray-600">Subtotal</span>
-                <span className="font-semibold blur-sm select-none">₹{order.subtotal.toFixed(0)}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Shipping</span>
-                <span className="font-semibold blur-sm select-none">₹{order.shipping.toFixed(0)}</span>
               </div>
             </div>
           </div>

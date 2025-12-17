@@ -19,18 +19,15 @@ export default function CheckoutPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const subtotal = getTotalPrice()
-    const shipping = 50
-    const total = subtotal + shipping
     
     const order = addOrder({
       customerName: formData.name,
       phone: formData.phone,
       shopName: formData.shopName,
       items: [...cart],
-      subtotal,
-      shipping,
-      total,
+      subtotal: 0,
+      shipping: 0,
+      total: 0,
       status: 'pending',
     })
     
@@ -109,23 +106,8 @@ export default function CheckoutPage() {
                 {orderDetails.items.map((item: any, index: number) => (
                   <div key={index} className="flex justify-between text-sm py-2 border-b last:border-b-0">
                     <span className="text-gray-600">{item.name} x{item.quantity}</span>
-                    <span className="font-semibold blur-sm select-none">₹{(item.price * item.quantity).toFixed(0)}</span>
                   </div>
                 ))}
-              </div>
-              <div className="mt-4 space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Subtotal</span>
-                  <span className="font-semibold blur-sm select-none">₹{orderDetails.subtotal.toFixed(0)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Shipping</span>
-                  <span className="font-semibold blur-sm select-none">₹{orderDetails.shipping.toFixed(0)}</span>
-                </div>
-                <div className="flex justify-between text-lg font-bold border-t pt-2 mt-2">
-                  <span>Total</span>
-                  <span className="blur-sm select-none">₹{orderDetails.total.toFixed(0)}</span>
-                </div>
               </div>
             </div>
           </div>
@@ -214,21 +196,8 @@ export default function CheckoutPage() {
                   <div className="flex flex-col">
                     <span className="text-gray-600">{item.name} x{item.quantity}</span>
                   </div>
-                  <span className="font-semibold blur-sm select-none">₹{(item.price * item.quantity).toFixed(0)}</span>
                 </div>
               ))}
-              <div className="border-t pt-3 flex justify-between">
-                <span className="text-gray-600">Subtotal</span>
-                <span className="font-semibold blur-sm select-none">₹{getTotalPrice().toFixed(0)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Shipping</span>
-                <span className="font-semibold blur-sm select-none">₹50</span>
-              </div>
-              <div className="border-t pt-3 flex justify-between text-xl font-bold">
-                <span>Total</span>
-                <span className="blur-sm select-none">₹{(getTotalPrice() + 50).toFixed(0)}</span>
-              </div>
             </div>
           </div>
         </div>

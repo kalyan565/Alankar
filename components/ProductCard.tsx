@@ -65,9 +65,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <h3 className="font-bold text-lg mb-2 text-gray-800">{product.name}</h3>
         <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
 
-        <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold text-black blur-sm select-none">₹{product.price.toFixed(0)}</span>
-          
+        <div className="flex items-center justify-end">
           {cartItem ? (
             // Show quantity controls if item is in cart
             <div className="flex items-center gap-3 bg-gray-100 rounded-lg px-3 py-2">

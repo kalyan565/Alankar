@@ -45,8 +45,6 @@ function formatWhatsAppMessage(orderData: any): string {
 📋 *Order Items:*
 ${items}
 
-💰 *Total Amount:* ₹${orderData.total.toFixed(0)}
-
 📅 *Order Date:* ${new Date(orderData.date).toLocaleString('en-IN')}
 
 Status: ${orderData.status.toUpperCase()}`
@@ -81,7 +79,6 @@ function formatEmailData(orderData: any) {
                   <tr style="background: #333; color: white;">
                     <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Item</th>
                     <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">Quantity</th>
-                    <th style="padding: 12px; text-align: right; border: 1px solid #ddd;">Price</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -89,17 +86,10 @@ function formatEmailData(orderData: any) {
                     <tr style="background: ${index % 2 === 0 ? '#fff' : '#f9f9f9'};">
                       <td style="padding: 10px; border: 1px solid #ddd;">${item.name}</td>
                       <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">${item.quantity}</td>
-                      <td style="padding: 10px; text-align: right; border: 1px solid #ddd;">₹${(item.price * item.quantity).toFixed(0)}</td>
                     </tr>
                   `).join('')}
                 </tbody>
               </table>
-            </div>
-            
-            <div style="margin: 20px 0; padding: 15px; background: #e8f5e9; border-radius: 5px; border-left: 4px solid #4caf50;">
-              <p style="margin: 5px 0;"><strong>Subtotal:</strong> ₹${orderData.subtotal.toFixed(0)}</p>
-              <p style="margin: 5px 0;"><strong>Shipping:</strong> ₹${orderData.shipping.toFixed(0)}</p>
-              <p style="margin: 10px 0 0 0; font-size: 20px; font-weight: bold; color: #333;"><strong>Total:</strong> ₹${orderData.total.toFixed(0)}</p>
             </div>
             
             <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; text-align: center; color: #666; font-size: 12px;">

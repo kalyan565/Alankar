@@ -53,7 +53,6 @@ export default function CartPage() {
                 />
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg text-gray-800">{item.name}</h3>
-                  <p className="text-gray-600 blur-sm select-none">₹{item.price.toFixed(0)}</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <button
@@ -71,10 +70,9 @@ export default function CartPage() {
                   </button>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold text-lg blur-sm select-none">₹{(item.price * item.quantity).toFixed(0)}</p>
                   <button
                     onClick={() => removeFromCart(item.id, item.selectedColorVariant)}
-                    className="mt-2 text-red-600 hover:text-red-700 hover:bg-red-50 p-1 rounded transition"
+                    className="text-red-600 hover:text-red-700 hover:bg-red-50 p-1 rounded transition"
                   >
                     <FiTrash2 />
                   </button>
@@ -90,15 +88,6 @@ export default function CartPage() {
             <div className="space-y-3 mb-6">
               <div className="flex justify-between">
                 <span className="text-gray-600">Items ({getTotalItems()})</span>
-                <span className="font-semibold blur-sm select-none">₹{getTotalPrice().toFixed(0)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Shipping</span>
-                <span className="font-semibold blur-sm select-none">₹50</span>
-              </div>
-              <div className="border-t pt-3 flex justify-between text-xl font-bold">
-                <span>Total</span>
-                <span className="blur-sm select-none">₹{(getTotalPrice() + 50).toFixed(0)}</span>
               </div>
             </div>
             <Link
