@@ -4,7 +4,8 @@ import { useState } from 'react'
 import Hero from '@/components/Hero'
 import CategoryGrid from '@/components/CategoryGrid'
 import ProductGrid from '@/components/ProductGrid'
-import { FiSearch } from 'react-icons/fi'
+import { FiSearch, FiArrowLeft } from 'react-icons/fi'
+import Link from 'next/link'
 import { products } from '@/data/products'
 
 export default function Home() {
@@ -82,7 +83,16 @@ export default function Home() {
         </div>
 
         {showProducts ? (
-          <ProductGrid category={matchedCategory} />
+          <>
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-gray-700 hover:text-red-600 transition mb-6 font-medium justify-center"
+            >
+              <FiArrowLeft className="w-5 h-5" />
+              Back to Categories
+            </Link>
+            <ProductGrid category={matchedCategory} />
+          </>
         ) : (
           <CategoryGrid />
         )}

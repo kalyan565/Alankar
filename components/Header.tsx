@@ -46,9 +46,6 @@ export default function Header() {
             <Link href="/products" className="text-gray-700 hover:text-red-600 transition font-medium">
               Products
             </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-red-600 transition font-medium">
-              Contact
-            </Link>
             <Link href="/orders" className="text-gray-700 hover:text-red-600 transition font-medium flex items-center gap-1">
               <FiPackage className="w-4 h-4" />
               Orders
@@ -76,30 +73,33 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <Link
               href="/cart"
-              className={`relative p-2 transition-all duration-300 ${
+              className={`relative flex items-center gap-2 transition-all duration-300 ${
                 getTotalItems() > 0 
                   ? 'text-red-600 hover:text-red-700' 
                   : 'text-gray-700 hover:text-black'
               }`}
             >
-              <FiShoppingCart 
-                className={`w-6 h-6 transition-all duration-300 ${
-                  cartAnimation 
-                    ? 'animate-cart-bounce' 
-                    : ''
-                } ${
-                  getTotalItems() > 0 
-                    ? 'text-red-600' 
-                    : 'text-gray-700'
-                }`}
-              />
-              {getTotalItems() > 0 && (
-                <span className={`absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold transition-all duration-300 ${
-                  cartAnimation ? 'animate-cart-pulse scale-125' : ''
-                }`}>
-                  {getTotalItems()}
-                </span>
-              )}
+              <div className="relative">
+                <FiShoppingCart 
+                  className={`w-6 h-6 transition-all duration-300 ${
+                    cartAnimation 
+                      ? 'animate-cart-bounce' 
+                      : ''
+                  } ${
+                    getTotalItems() > 0 
+                      ? 'text-red-600' 
+                      : 'text-gray-700'
+                  }`}
+                />
+                {getTotalItems() > 0 && (
+                  <span className={`absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold transition-all duration-300 ${
+                    cartAnimation ? 'animate-cart-pulse scale-125' : ''
+                  }`}>
+                    {getTotalItems()}
+                  </span>
+                )}
+              </div>
+              <span className="font-medium hidden md:inline">Cart</span>
             </Link>
 
             <button
@@ -126,13 +126,6 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
             >
               Products
-            </Link>
-            <Link
-              href="/contact"
-              className="block py-2 text-gray-700 hover:text-red-600 transition"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
             </Link>
                 <Link
                   href="/orders"

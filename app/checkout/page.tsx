@@ -4,15 +4,14 @@ import { useState } from 'react'
 import { useCart } from '@/context/CartContext'
 import { useOrders } from '@/context/OrderContext'
 import Link from 'next/link'
-import { FiCheckCircle, FiPackage } from 'react-icons/fi'
+import { FiCheckCircle, FiPackage, FiArrowLeft } from 'react-icons/fi'
 
 export default function CheckoutPage() {
   const { cart, getTotalPrice, clearCart } = useCart()
   const { addOrder } = useOrders()
   const [formData, setFormData] = useState({
     name: '',
-    phone: '',
-    shopName: '',
+    place: '',
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [orderDetails, setOrderDetails] = useState<any>(null)
@@ -22,8 +21,8 @@ export default function CheckoutPage() {
     
     const order = addOrder({
       customerName: formData.name,
-      phone: formData.phone,
-      shopName: formData.shopName,
+      phone: '',
+      shopName: formData.place,
       items: [...cart],
       subtotal: 0,
       shipping: 0,
@@ -84,8 +83,7 @@ export default function CheckoutPage() {
               <div>
                 <h3 className="font-semibold text-gray-700 mb-2">Customer Information</h3>
                 <p className="text-gray-600">Name: <span className="font-medium">{orderDetails.customerName}</span></p>
-                <p className="text-gray-600">Phone: <span className="font-medium">{orderDetails.phone}</span></p>
-                <p className="text-gray-600">Shop: <span className="font-medium">{orderDetails.shopName}</span></p>
+                <p className="text-gray-600">Place: <span className="font-medium">{orderDetails.shopName}</span></p>
               </div>
               <div>
                 <h3 className="font-semibold text-gray-700 mb-2">Order Information</h3>
@@ -134,6 +132,13 @@ export default function CheckoutPage() {
 
   return (
     <div className="container mx-auto px-4 py-12">
+      <Link
+        href="/cart"
+        className="flex items-center gap-2 text-gray-700 hover:text-red-600 transition mb-6 font-medium"
+      >
+        <FiArrowLeft className="w-5 h-5" />
+        Back to Cart
+      </Link>
       <h1 className="text-4xl font-bold mb-8 text-gray-800">Checkout</h1>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -154,23 +159,12 @@ export default function CheckoutPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-transparent focus:shadow-md focus:shadow-red-100 focus:bg-gray-50 transition-all duration-300"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Shop Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Place</label>
                   <input
                     type="text"
-                    name="shopName"
+                    name="place"
                     required
-                    value={formData.shopName}
+                    value={formData.place}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-transparent focus:shadow-md focus:shadow-red-100 focus:bg-gray-50 transition-all duration-300"
                   />

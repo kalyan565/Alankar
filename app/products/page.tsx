@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import ProductGrid from '@/components/ProductGrid'
-import { FiX } from 'react-icons/fi'
+import { FiX, FiArrowLeft } from 'react-icons/fi'
 import Link from 'next/link'
 
 function ProductsContent() {
@@ -22,6 +22,15 @@ function ProductsContent() {
 
   return (
     <div className="container mx-auto px-4 py-12">
+      {selectedCategory && (
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-gray-700 hover:text-red-600 transition mb-6 font-medium"
+        >
+          <FiArrowLeft className="w-5 h-5" />
+          Back to Categories
+        </Link>
+      )}
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-4xl font-bold text-gray-800">
           {selectedCategory ? `${selectedCategory} Products` : 'Our Products'}
@@ -29,7 +38,7 @@ function ProductsContent() {
         {selectedCategory && (
           <Link
             href="/products"
-            className="flex items-center gap-2 text-black hover:text-red-600 font-medium"
+            className="flex items-center gap-2 text-red-500 hover:text-red-700 font-medium"
           >
             <FiX className="w-5 h-5" />
             Clear Filter

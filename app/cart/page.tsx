@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useCart } from '@/context/CartContext'
-import { FiTrash2, FiPlus, FiMinus } from 'react-icons/fi'
+import { FiTrash2, FiPlus, FiMinus, FiArrowLeft } from 'react-icons/fi'
 import Link from 'next/link'
 
 export default function CartPage() {
@@ -38,6 +38,13 @@ export default function CartPage() {
 
   return (
     <div className="container mx-auto px-4 py-12">
+      <Link
+        href="/products"
+        className="flex items-center gap-2 text-gray-700 hover:text-red-600 transition mb-6 font-medium"
+      >
+        <FiArrowLeft className="w-5 h-5" />
+        Back to Products
+      </Link>
       <h1 className="text-4xl font-bold mb-8 text-gray-800">Shopping Cart</h1>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
