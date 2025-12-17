@@ -16,7 +16,7 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Address</h4>
             <p className="text-gray-400 text-sm leading-relaxed">
-              PP: Liberty Theater,<br />
+              Opposite Liberty Theater,<br />
               Beside Mahalakshmi Temple,<br />
               Besta vari Veedhi,<br />
               Station Road,<br />
