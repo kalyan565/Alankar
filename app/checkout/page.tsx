@@ -44,7 +44,7 @@ export default function CheckoutPage() {
           <p className="text-gray-600 mb-8">Thank you for your order. We&apos;ll send you a confirmation email shortly.</p>
           <Link
             href="/"
-            className="inline-block bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-700 transition"
+            className="inline-block bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-600 transition"
           >
             Continue Shopping
           </Link>
@@ -71,7 +71,7 @@ export default function CheckoutPage() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -82,7 +82,7 @@ export default function CheckoutPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -93,7 +93,7 @@ export default function CheckoutPage() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -104,7 +104,7 @@ export default function CheckoutPage() {
                     required
                     value={formData.city}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -115,7 +115,7 @@ export default function CheckoutPage() {
                     required
                     value={formData.address}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -126,7 +126,7 @@ export default function CheckoutPage() {
                     required
                     value={formData.zipCode}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
                   />
                 </div>
               </div>
@@ -144,7 +144,7 @@ export default function CheckoutPage() {
                     value={formData.cardNumber}
                     onChange={handleChange}
                     placeholder="1234 5678 9012 3456"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
@@ -157,7 +157,7 @@ export default function CheckoutPage() {
                       value={formData.expiryDate}
                       onChange={handleChange}
                       placeholder="MM/YY"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -169,7 +169,7 @@ export default function CheckoutPage() {
                       value={formData.cvv}
                       onChange={handleChange}
                       placeholder="123"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -178,7 +178,7 @@ export default function CheckoutPage() {
 
             <button
               type="submit"
-              className="w-full bg-primary-600 text-white py-3 rounded-lg font-semibold hover:bg-primary-700 transition"
+              className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-red-600 transition"
             >
               Place Order
             </button>
@@ -194,7 +194,7 @@ export default function CheckoutPage() {
                   <div className="flex flex-col">
                     <span className="text-gray-600">{item.name} x{item.quantity}</span>
                     {item.selectedColorVariant && (
-                      <span className="text-xs text-primary-600">Color: {item.selectedColorVariant}</span>
+                      <span className="text-xs text-gray-700">Color: {item.selectedColorVariant}</span>
                     )}
                   </div>
                   <span className="font-semibold">₹{(item.price * item.quantity).toFixed(0)}</span>

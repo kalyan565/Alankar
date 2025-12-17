@@ -1,33 +1,58 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import ProductGrid from '@/components/ProductGrid'
-import { FiSearch } from 'react-icons/fi'
+import { FiX } from 'react-icons/fi'
+import Link from 'next/link'
 
-export default function ProductsPage() {
-  const [searchQuery, setSearchQuery] = useState('')
+function ProductsContent() {
+  const searchParams = useSearchParams()
+  const categoryParam = searchParams.get('category')
+  const searchParam = searchParams.get('search')
+  const [searchQuery, setSearchQuery] = useState(searchParam || '')
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(categoryParam)
+
+  useEffect(() => {
+    setSelectedCategory(categoryParam)
+    if (searchParam) {
+      setSearchQuery(searchParam)
+    }
+  }, [categoryParam, searchParam])
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-8 text-gray-800 text-center">
-        Our Products
-      </h1>
-      
-      <div className="max-w-2xl mx-auto mb-8">
-        <div className="relative">
-          <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-          <input
-            type="text"
-            placeholder="Search for products..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
-          />
-        </div>
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-4xl font-bold text-gray-800">
+          {selectedCategory ? `${selectedCategory} Products` : 'Our Products'}
+        </h1>
+        {selectedCategory && (
+          <Link
+            href="/products"
+            className="flex items-center gap-2 text-black hover:text-red-600 font-medium"
+          >
+            <FiX className="w-5 h-5" />
+            Clear Filter
+          </Link>
+        )}
       </div>
 
-      <ProductGrid searchQuery={searchQuery} />
+      <ProductGrid searchQuery={searchQuery} category={selectedCategory || undefined} />
     </div>
+  )
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={
+      <div className="container mx-auto px-4 py-12">
+        <div className="text-center">
+          <p className="text-gray-600">Loading products...</p>
+        </div>
+      </div>
+    }>
+      <ProductsContent />
+    </Suspense>
   )
 }
 

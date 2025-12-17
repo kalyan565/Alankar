@@ -4,83 +4,99 @@ export default function Logo() {
   return (
     <Link href="/" className="flex items-center gap-3 group">
       <div className="relative">
-        {/* Main Logo Icon - Elegant "A" with beauty and elegance elements */}
+        {/* Creative Logo - Mixed Letters "A" and "L" forming Alankar */}
         <svg
-          width="50"
-          height="50"
-          viewBox="0 0 50 50"
+          width="55"
+          height="55"
+          viewBox="0 0 55 55"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
+          className="transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
         >
-          {/* Outer decorative ring */}
-          <circle cx="25" cy="25" r="23" fill="url(#outerGradient)" opacity="0.1" />
+          {/* Background circle with gradient */}
+          <circle cx="27.5" cy="27.5" r="26" fill="url(#logoGradient)" />
           
-          {/* Main background circle with gradient */}
-          <circle cx="25" cy="25" r="20" fill="url(#mainGradient)" />
-          
-          {/* Elegant stylized "A" letter */}
+          {/* Stylized "A" - Left side */}
           <path
-            d="M25 10 L18 38 L21 38 L23 28 L27 28 L29 38 L32 38 L25 10 Z"
+            d="M18 12 L12 38 L16 38 L18 28 L22 28 L24 38 L28 38 L22 12 L18 12 Z"
             fill="white"
             stroke="white"
             strokeWidth="1.2"
           />
-          
-          {/* Horizontal accent bar with gradient */}
           <path
-            d="M22 26 L28 26"
+            d="M19 25 L21 25"
             stroke="url(#accentGradient)"
-            strokeWidth="3.5"
+            strokeWidth="2.5"
             strokeLinecap="round"
           />
           
-          {/* Beauty sparkle elements - top left */}
-          <g opacity="0.9">
-            <circle cx="12" cy="12" r="2.5" fill="white" />
-            <path
-              d="M12 12 L12 8 M12 12 L12 16 M12 12 L8 12 M12 12 L16 12"
-              stroke="white"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-            />
-          </g>
-          
-          {/* Beauty sparkle elements - top right */}
-          <g opacity="0.9">
-            <circle cx="38" cy="12" r="2.5" fill="white" />
-            <path
-              d="M38 12 L38 8 M38 12 L38 16 M38 12 L34 12 M38 12 L42 12"
-              stroke="white"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-            />
-          </g>
-          
-          {/* Elegant curve accent - bottom */}
+          {/* Stylized "L" - Right side, overlapping with A */}
           <path
-            d="M18 36 Q25 40 32 36"
+            d="M30 12 L30 38 L38 38 L38 34 L34 34 L34 12 L30 12 Z"
+            fill="white"
+            stroke="white"
+            strokeWidth="1.2"
+            opacity="0.95"
+          />
+          
+          {/* Connecting element - "a" lowercase integrated */}
+          <path
+            d="M25 20 Q28 18 32 20 Q34 22 33 25 Q32 28 29 28 Q26 28 25 25 Q24 22 25 20 Z"
+            fill="url(#accentGradient)"
+            stroke="white"
+            strokeWidth="1"
+            opacity="0.9"
+          />
+          
+          {/* Decorative swirl connecting letters */}
+          <path
+            d="M20 15 Q24 13 28 15 Q32 17 30 20"
+            stroke="url(#accentGradient)"
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+            opacity="0.7"
+          />
+          
+          {/* Beauty sparkle elements */}
+          <circle cx="14" cy="14" r="2.5" fill="white" opacity="0.9" />
+          <path
+            d="M14 14 L14 10 M14 14 L14 18 M14 14 L10 14 M14 14 L18 14"
+            stroke="white"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            opacity="0.7"
+          />
+          
+          <circle cx="41" cy="14" r="2.5" fill="white" opacity="0.9" />
+          <path
+            d="M41 14 L41 10 M41 14 L41 18 M41 14 L37 14 M41 14 L45 14"
+            stroke="white"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            opacity="0.7"
+          />
+          
+          {/* Elegant curve accent */}
+          <path
+            d="M16 36 Q27.5 40 39 36"
             stroke="url(#accentGradient)"
             strokeWidth="2"
             strokeLinecap="round"
             fill="none"
-            opacity="0.7"
+            opacity="0.6"
           />
           
           <defs>
-            <linearGradient id="outerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#d946ef" />
-              <stop offset="100%" stopColor="#a21caf" />
-            </linearGradient>
-            <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#d946ef" />
-              <stop offset="50%" stopColor="#c026d3" />
-              <stop offset="100%" stopColor="#a21caf" />
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#1f2937" />
+              <stop offset="50%" stopColor="#111827" />
+              <stop offset="100%" stopColor="#000000" />
             </linearGradient>
             <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#fae8ff" />
-              <stop offset="50%" stopColor="#f0abfc" />
-              <stop offset="100%" stopColor="#e879f9" />
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="50%" stopColor="#e5e7eb" />
+              <stop offset="100%" stopColor="#d1d5db" />
             </linearGradient>
           </defs>
         </svg>
@@ -88,14 +104,21 @@ export default function Logo() {
       
       {/* Text Logo with elegant typography */}
       <div className="flex flex-col">
-        <span className="text-2xl font-bold text-primary-600 leading-tight tracking-tight">
-          Alankar
-        </span>
-        <span className="text-xs font-semibold text-primary-500 leading-tight -mt-0.5 tracking-wider uppercase">
+        <div className="flex items-baseline gap-1">
+          <span className="text-2xl font-bold text-black leading-tight tracking-tight">
+            Al
+          </span>
+          <span className="text-xl font-bold text-gray-700 leading-tight">
+            an
+          </span>
+          <span className="text-2xl font-bold text-black leading-tight tracking-tight">
+            kar
+          </span>
+        </div>
+        <span className="text-xs font-semibold text-gray-600 leading-tight -mt-0.5 tracking-wider uppercase">
           Cosmetics
         </span>
       </div>
     </Link>
   )
 }
-

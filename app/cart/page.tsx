@@ -27,7 +27,7 @@ export default function CartPage() {
           <p className="text-gray-600 mb-8">Add some products to get started!</p>
           <Link
             href="/"
-            className="inline-block bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-700 transition"
+            className="inline-block bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-600 transition"
           >
             Continue Shopping
           </Link>
@@ -54,21 +54,21 @@ export default function CartPage() {
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg text-gray-800">{item.name}</h3>
                   {item.selectedColorVariant && (
-                    <p className="text-sm text-primary-600 font-medium">Color: {item.selectedColorVariant}</p>
+                    <p className="text-sm text-gray-700 font-medium">Color: {item.selectedColorVariant}</p>
                   )}
                   <p className="text-gray-600">₹{item.price.toFixed(0)}</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <button
                     onClick={() => updateQuantity(item.id, item.quantity - 1, item.selectedColorVariant)}
-                    className="p-2 rounded-lg hover:bg-gray-100 transition"
+                    className="p-2 rounded-lg hover:bg-red-50 hover:text-red-600 transition"
                   >
                     <FiMinus />
                   </button>
                   <span className="w-12 text-center font-semibold">{item.quantity}</span>
                   <button
                     onClick={() => updateQuantity(item.id, item.quantity + 1, item.selectedColorVariant)}
-                    className="p-2 rounded-lg hover:bg-gray-100 transition"
+                    className="p-2 rounded-lg hover:bg-red-50 hover:text-red-600 transition"
                   >
                     <FiPlus />
                   </button>
@@ -77,7 +77,7 @@ export default function CartPage() {
                   <p className="font-bold text-lg">₹{(item.price * item.quantity).toFixed(0)}</p>
                   <button
                     onClick={() => removeFromCart(item.id, item.selectedColorVariant)}
-                    className="mt-2 text-red-500 hover:text-red-700 transition"
+                    className="mt-2 text-red-600 hover:text-red-700 hover:bg-red-50 p-1 rounded transition"
                   >
                     <FiTrash2 />
                   </button>
@@ -106,7 +106,7 @@ export default function CartPage() {
             </div>
             <Link
               href="/checkout"
-              className="block w-full bg-primary-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-primary-700 transition"
+              className="block w-full bg-black text-white text-center py-3 rounded-lg font-semibold hover:bg-red-600 transition"
             >
               Proceed to Checkout
             </Link>

@@ -5,14 +5,27 @@ import { products } from '@/data/products'
 
 interface ProductGridProps {
   searchQuery?: string
+  category?: string
 }
 
-export default function ProductGrid({ searchQuery = '' }: ProductGridProps) {
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.category.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+export default function ProductGrid({ searchQuery = '', category }: ProductGridProps) {
+  let filteredProducts = products
+
+  // Filter by category if provided
+  if (category) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.category === category
+    )
+  }
+
+  // Filter by search query if provided
+  if (searchQuery) {
+    filteredProducts = filteredProducts.filter((product) =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  }
   
   // Sort products: featured first, then by id
   const sortedProducts = [...filteredProducts].sort((a, b) => {
