@@ -39,8 +39,7 @@ function formatWhatsAppMessage(orderData: any): string {
 
 👤 *Customer Details:*
 • Name: ${orderData.customerName}
-• Phone: ${orderData.phone}
-• Shop: ${orderData.shopName}
+• Place: ${orderData.shopName}
 
 📋 *Order Items:*
 ${items}
@@ -68,8 +67,7 @@ function formatEmailData(orderData: any) {
             <div style="margin: 20px 0;">
               <h3 style="color: #333; border-bottom: 2px solid #eee; padding-bottom: 5px;">Customer Information</h3>
               <p><strong>Name:</strong> ${orderData.customerName}</p>
-              <p><strong>Phone:</strong> <a href="tel:${orderData.phone}">${orderData.phone}</a></p>
-              <p><strong>Shop Name:</strong> ${orderData.shopName}</p>
+              <p><strong>Place:</strong> ${orderData.shopName}</p>
             </div>
             
             <div style="margin: 20px 0;">
