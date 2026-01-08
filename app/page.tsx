@@ -1,19 +1,34 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Hero from '@/components/Hero'
 import CategoryGrid from '@/components/CategoryGrid'
 import ProductGrid from '@/components/ProductGrid'
 import { FiSearch, FiArrowLeft } from 'react-icons/fi'
 import Link from 'next/link'
 import { products } from '@/data/products'
+import { Product } from '@/context/CartContext'
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
-  
+  const [allProducts, setAllProducts] = useState<Product[]>(products)
+
+  useEffect(() => {
+    // Load custom products from localStorage
+    try {
+      const customProducts = localStorage.getItem('customProducts')
+      if (customProducts) {
+        const parsed = JSON.parse(customProducts)
+        setAllProducts([...products, ...parsed])
+      }
+    } catch (error) {
+      console.error('Error loading custom products:', error)
+    }
+  }, [])
+
   // Check if search matches any category
   const getMatchingCategory = () => {
-    const categories = Array.from(new Set(products.map(p => p.category)))
+    const categories = Array.from(new Set(allProducts.map(p => p.category)))
     const query = searchQuery.toLowerCase().trim()
     
     if (!query) return null

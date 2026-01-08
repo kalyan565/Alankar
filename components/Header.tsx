@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useCart } from '@/context/CartContext'
-import { FiShoppingCart, FiMenu, FiSearch, FiPackage } from 'react-icons/fi'
+import { FiShoppingCart, FiMenu, FiSearch, FiPackage, FiPlus } from 'react-icons/fi'
 import { useState, useEffect } from 'react'
 import Logo from './Logo'
 
@@ -49,6 +49,10 @@ export default function Header() {
             <Link href="/orders" className="text-gray-700 hover:text-red-600 transition font-medium flex items-center gap-1">
               <FiPackage className="w-4 h-4" />
               Orders
+            </Link>
+            <Link href="/admin" className="text-gray-700 hover:text-red-600 transition font-medium flex items-center gap-1">
+              <FiPlus className="w-4 h-4" />
+              Add Product
             </Link>
             
             {/* Search Bar */}
@@ -134,6 +138,14 @@ export default function Header() {
                 >
                   <FiPackage className="w-4 h-4" />
                   Orders
+                </Link>
+                <Link
+                  href="/admin"
+                  className="block py-2 text-gray-700 hover:text-red-600 transition flex items-center gap-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <FiPlus className="w-4 h-4" />
+                  Add Product
                 </Link>
 
                 {/* Mobile Search Bar */}

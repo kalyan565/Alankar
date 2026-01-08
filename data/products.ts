@@ -5,6 +5,22 @@ import { Product } from '@/context/CartContext'
 // - Or use local images in /public/images/products/ folder
 // See PRODUCT_IMAGES_GUIDE.md for detailed instructions
 
+// Get custom products from localStorage
+const getCustomProducts = (): Product[] => {
+  if (typeof window === 'undefined') return []
+  try {
+    const customProducts = localStorage.getItem('customProducts')
+    return customProducts ? JSON.parse(customProducts) : []
+  } catch {
+    return []
+  }
+}
+
+export const getProducts = (): Product[] => {
+  const customProducts = typeof window !== 'undefined' ? getCustomProducts() : []
+  return [...products, ...customProducts]
+}
+
 export const products: Product[] = [
   // Featured Hair Colors - at the top
   {
